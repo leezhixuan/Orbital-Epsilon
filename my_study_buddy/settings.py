@@ -24,12 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%i5pkv96lg0%*+7b44tg%hvbebvvg+%*fghco-+jjwbk@p3bki'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('DEBUG') == 'TRUE':
-    DEBUG = True
-elif os.environ.get('DEBUG') == 'FALSE':
-    DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        'localhost',]
 
 
 # Application definition
@@ -154,11 +152,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # FOR CRISPY_FORMS
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-DEFAULT_FILE_STORAGE = 'django_gcloud_storage.DjangoGCloudStorage'
-
-GCS_PROJECT = os.environ.get('GCS_PROJECT')
-GCS_BUCKET = os.environ.get('GCS_BUCKET')
+GCS_PROJECT = os.environ.get("manifest-craft-314609")
+GCS_BUCKET = os.environ.get("gcloud-msbud")
 GCS_CREDENTIALS_FILE_PATH = os.path.join(BASE_DIR, "my-key.json")
+
 GCS_USE_UNSIGNED_URLS = True
 
 django_heroku.settings(locals())
