@@ -2,11 +2,11 @@ from django import forms
 from .models import Comments, Post
 
 class NewPostForm(forms.ModelForm):
-    pic = forms.ImageField(required=False)
+    picture = forms.ImageField(required=False)
 
     class Meta:
         model = Post
-        fields = ['description', 'pic', 'tags']
+        fields = ['picture', 'body', 'tags']
 
 class NewCommentForm(forms.ModelForm):
 

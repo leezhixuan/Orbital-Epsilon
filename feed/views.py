@@ -77,7 +77,7 @@ def create_post(request):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
-	fields = ['description', 'pic', 'tags']
+	fields = ['body', 'picture', 'tags']
 	template_name = 'feed/create_post.html'
 
 	def form_valid(self, form):
@@ -126,4 +126,3 @@ def like(request):
     }
 	response = json.dumps(resp)
 	return HttpResponse(response, content_type = "application/json")
-

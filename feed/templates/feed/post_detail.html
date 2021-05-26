@@ -33,10 +33,12 @@
             >Posted on {{ post.date_posted }}</small
           >
           <br /><br />
-          <p class="card-text text-dark">{{ post.description }}</p>
+          <p class="card-text text-dark">{{ post.body }}</p>
         </div>
-        <a href="{{ post.pic.url }}"
-          ><img class="card-img-top" src="{{ post.pic.url }}" alt=""
+        {% if post.picture %}
+          <a href="{{ post.picture.url }}"
+            ><img class="card-img-top" src="{{ post.picture.url }}" alt=""
+        {% endif %}
         /></a>
         {% if post.tags %}
         <br />
