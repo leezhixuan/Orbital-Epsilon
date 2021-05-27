@@ -93,11 +93,11 @@ def delete_friend_request(request, id):
 	return HttpResponseRedirect('/users/{}'.format(request.user.profile.slug))
 
 def delete_friend(request, id):
-	user_profile = request.user.profile
-	friend_profile = get_object_or_404(Profile, id=id)
-	user_profile.friends.remove(friend_profile)
-	friend_profile.friends.remove(user_profile)
-	return HttpResponseRedirect('/users/{}'.format(friend_profile.slug))
+    user_profile = request.user.profile
+    friend_profile = get_object_or_404(Profile, id=id)
+    user_profile.friends.remove(friend_profile)
+    friend_profile.friends.remove(user_profile)
+    return HttpResponseRedirect('/users/{}'.format(friend_profile.slug))
 
 @login_required
 def profile_view(request, slug):
@@ -207,4 +207,4 @@ def search_users(request):
 	context ={
 		'users': object_list
 	}
-	return render(request, "users/search_users.html", context)
+	return render(request, "users/coming_soon.html", context)

@@ -40,11 +40,10 @@
         </div>
       </div>
       {% else %}
+      <br /><br />
       <h5>
-        <i
-          >You do not have any friends yet. Try looking for new
-          <a href="{% url 'users_list' %}">friends here!</a></i
-        >
+        You do not have any friends yet. Why not look for new friends
+          <a href="{% url 'users_list' %}">here</a>?
       </h5>
       {% endif %}
     </div>
