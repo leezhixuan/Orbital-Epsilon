@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-%i5pkv96lg0%*+7b44tg%hvbebvvg+%*fghco-+jjwbk@p3bki
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        'localhost',]
+        'localhost',
+        'https://msbud.herokuapp.com/',
+        ]
 
 
 # Application definition
