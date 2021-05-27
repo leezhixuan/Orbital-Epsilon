@@ -44,24 +44,26 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'forum' %}">Forum</a>
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" href="{% url 'users_list' %}"
             >Find New Buddies</a
           >
-           <a class="nav-item nav-link" href="{% url 'post-create' %}"
+          <a class="nav-item nav-link" href="{% url 'resources' %}">Resources</a>
+          {% block searchform %}{% endblock searchform %}
+          &emsp;&emsp;
+          <a class="nav-item nav-link" href="{% url 'my_profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'post-create' %}"
             >Create Post</a
           >
-          &emsp;&emsp;
-          {% block searchform %}{% endblock searchform %}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          <a class="nav-item nav-link" href="{% url 'my_profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'messages' %}">Messages</a>
           <a class="nav-item nav-link" href="{% url 'friend_list' %}"
             >My Buddies</a
           >
           <a
             class="nav-item nav-link btn btn-danger ml-4 text-light"
             href="{% url 'logout' %}"
-            >Log Out</a
+            >Logout</a
           >
           {% else %}
           <a

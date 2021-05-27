@@ -107,7 +107,7 @@ def search_posts(request):
 		'posts': object_list,
 		'liked_post': liked
 	}
-	return render(request, "feed/search_posts.html", context)
+	return render(request, "feed/coming_soon.html", context)
 
 @login_required
 def like(request):
@@ -126,3 +126,14 @@ def like(request):
     }
 	response = json.dumps(resp)
 	return HttpResponse(response, content_type = "application/json")
+
+def forum_view(request):
+    return render(request, "feed/coming_soon.html")
+
+@login_required
+def messages(request):
+    return render(request, "feed/coming_soon.html")
+
+@login_required
+def resources(request):
+    return render(request, "feed/coming_soon.html")
