@@ -51,12 +51,12 @@
           >
           <a class="nav-item nav-link" href="{% url 'resources' %}">Resources</a>
           {% block searchform %}{% endblock searchform %}
-          &emsp;&emsp;
+          &emsp;&emsp;&emsp;
           <a class="nav-item nav-link" href="{% url 'my_profile' %}">Profile</a>
           <a class="nav-item nav-link" href="{% url 'post-create' %}"
             >Create Post</a
           >
-          <a class="nav-item nav-link" href="{% url 'messages' %}">Messages</a>
+          <a class="nav-item nav-link" href="{% url 'postman:inbox' %}">Inbox</a>
           <a class="nav-item nav-link" href="{% url 'friend_list' %}"
             >My Buddies</a
           >

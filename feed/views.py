@@ -131,9 +131,5 @@ def forum_view(request):
     return render(request, "feed/coming_soon.html")
 
 @login_required
-def messages(request):
-    return render(request, "feed/coming_soon.html")
-
-@login_required
 def resources(request):
     return render(request, "feed/coming_soon.html")
