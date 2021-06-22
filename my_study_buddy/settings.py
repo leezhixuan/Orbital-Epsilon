@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'stdimage',
 
+    # messaging
+    'postman',
+
     # Default django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -143,8 +146,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'EMAIL_HOST_USER'
-EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+EMAIL_HOST_USER = 'orbital.msbud@gmail.com'
+EMAIL_HOST_PASSWORD = 'qwertymsbud'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -161,3 +164,6 @@ GCS_CREDENTIALS_FILE_PATH = os.path.join(BASE_DIR, "my-key.json")
 GCS_USE_UNSIGNED_URLS = True
 
 django_heroku.settings(locals())
+
+POSTMAN_AUTO_MODERATE_AS = True
+POSTMAN_DISALLOW_ANONYMOUS = True
