@@ -24,11 +24,9 @@ django-appconf==1.0.4
 django-autoslug==1.9.8
 django-bootstrap4==3.0.1
 django-crispy-forms==1.11.2
-django-djconfig==0.10.0
 django-gcloud-storage==0.4.0
 django-haystack==3.0
 django-heroku==0.3.1
-django-infinite-scroll-pagination==1.1.0
 django-js-asset==1.2.2
 django-machina==1.1.4
 django-model-utils==4.1.1
@@ -61,13 +59,12 @@ incremental==21.3.0
 jmespath==0.10.0
 Markdown==3.3.4
 markdown2==2.4.0
-mistune==0.8.4
 oauthlib==3.1.0
-olefile==0.46
 packaging==20.9
 Pillow==8.0.1
 pluggy==0.13.1
 protobuf==3.17.0
+psycopg2==2.9.1
 psycopg2-binary==2.8.6
 py==1.10.0
 pyasn1==0.4.8
@@ -95,5 +92,4 @@ urllib3==1.26.4
 virtualenv==20.4.7
 webencodings==0.5.1
 whitenoise==5.2.0
-Whoosh==2.7.4
 zope.interface==5.4.0
