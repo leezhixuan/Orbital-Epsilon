@@ -4,10 +4,10 @@ from django.urls import reverse
 from django.utils import timezone
 
 class Post(models.Model):
-	body = models.CharField(max_length=255, blank=True)
+	body = models.TextField(blank=True)
 	picture = models.ImageField(upload_to='path/to/img', default=None)
 	date_posted = models.DateTimeField(default=timezone.now)
-	user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+	user_name = models.ForeignKey(User, related_name='updated_by', on_delete=models.CASCADE)
 	tags = models.CharField(max_length=100, blank=True)
 
 	def __str__(self):
