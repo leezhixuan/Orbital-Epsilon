@@ -207,4 +207,4 @@ def search_users(request):
 	context ={
 		'users': object_list
 	}
-	return render(request, "users/coming_soon.html", context)
+	return render(request, "users/search_user.html", context)
