@@ -13,4 +13,5 @@ We and the people around us have found it hard to make friends as classes contin
 # Aim:
 We hope to create a platform that would allow NUS students to come together and create a more conducive environment and engaging experience for the student population in NUS.
 
-
+# View Full Documentation: 
+https://docs.google.com/document/d/19EJ7qzoDQBzEJRiDnY2ZSlvM7q4jUVpmTcfrR_8RYgA/edit?usp=sharing
