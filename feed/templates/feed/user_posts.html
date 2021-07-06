@@ -33,6 +33,8 @@
             >Posted on {{ post.date_posted }}</small
           >
           <br /><br />
+          <h3>{{ post.title }}</h3>
+          <br />
           <p class="card-text text-dark">{{ post.body }}</p>
         </div>
         <a href="{% url 'post-detail' post.id %}"

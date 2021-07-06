@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 class Post(models.Model):
+	title = models.CharField(max_length=150, blank=True)
 	body = models.TextField(blank=True)
 	picture = models.ImageField(upload_to='path/to/img', default=None)
 	date_posted = models.DateTimeField(default=timezone.now)

@@ -29,20 +29,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-          <a class="nav-item nav-link" href="{% url 'forum:index' %}">Forum</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'home' %}">Home</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'forum:index' %}">Forum</a>
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" href="{% url 'users_list' %}"
+          <a class="nav-item nav-link mx-4" href="{% url 'users_list' %}"
             >Find New Buddies</a
           >
-          <a class="nav-item nav-link" href="{% url 'resources' %}">Resources</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'resources' %}">Resources</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% block header_collapse %}
-            <form class="form-inline my-2 ml-3 my-lg-0" role="search" action="{% url 'forum_search:search' %}">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <form class="form-inline mx-4" role="search" action="{% url 'forum_search:search' %}">
+              <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" name="q">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
             </form>
             <div class="navbar-nav mr-auto">
@@ -50,16 +50,26 @@
             </div>
             {% endblock header_collapse %}
           &emsp;&emsp;
-          <a class="nav-item nav-link" href="{% url 'my_profile' %}">Profile</a>
-          <a class="nav-item nav-link" href="{% url 'post-create' %}"
+          <a class="nav-item nav-link mx-4" href="{% url 'my_profile' %}">Profile</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
             >Create Post</a
           >
-          <a class="nav-item nav-link" href="{% url 'postman:inbox' %}">Inbox</a>
-          <a class="nav-item nav-link" href="{% url 'friend_list' %}"
+          <li class="nav-item dropdown mx-4">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Messaging</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'postman:inbox' %}">Inbox{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a>
+                <a class="dropdown-item" href="{% url 'postman:write' %}">Write</a>
+                <a class="dropdown-item" href="{% url 'postman:sent' %}">Sent</a>
+                <a class="dropdown-item" href="{% url 'postman:archives' %}">Archives</a>
+                <a class="dropdown-item" href="{% url 'postman:trash' %}">Trash</a>
+              </div>
+            </li>
+          <a class="nav-item nav-link mx-4" href="{% url 'friend_list' %}"
             >My Buddies</a
           >
           <a
-            class="nav-item nav-link btn btn-danger ml-4 text-light"
+            class="nav-item nav-link btn btn-danger text-light mx-4"
             href="{% url 'logout' %}"
             >Logout</a
           >

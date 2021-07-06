@@ -4,7 +4,7 @@
   action="{% url 'search_posts' %}"
   method="get"
 >
-  <input name="p" type="text" placeholder="Search posts.." />
+  <input name="p" type="text" placeholder="Search Posts (via tags).." />
   <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
     Search
   </button>
@@ -33,6 +33,8 @@
             >Posted on {{ post.date_posted }}</small
           >
           <br /><br />
+          <h3>{{ post.title }}</h3>
+          <br />
           <p class="card-text text-dark">{{ post.body }}</p>
         </div>
         <a href="{% url 'post-detail' post.id %}"
