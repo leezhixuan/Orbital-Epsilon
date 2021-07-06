@@ -85,11 +85,7 @@ signals==0.0.2
 six==1.16.0
 soupsieve==2.2.1
 sqlparse==0.4.1
-toml==0.10.2
-Twisted==21.2.0
-txaio==21.2.1
 urllib3==1.26.4
 virtualenv==20.4.7
-webencodings==0.5.1
 whitenoise==5.2.0
-zope.interface==5.4.0
+Whoosh==2.7.4
