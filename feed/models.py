@@ -12,7 +12,7 @@ class Post(models.Model):
 	tags = models.CharField(max_length=100, blank=True)
 
 	def __str__(self):
-		return self.description
+		return self.body
 
 
 	def get_absolute_url(self):
