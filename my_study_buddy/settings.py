@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import django_heroku
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'insert your own'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -60,6 +62,9 @@ INSTALLED_APPS = [
     'machina.apps.forum_member',
     'machina.apps.forum_permission',
 
+    # s3 storage
+    'storages',
+
     # Default django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,6 +85,9 @@ MIDDLEWARE = [
 
     # machina
     'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+
+    # admin page css
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'my_study_buddy.urls'
@@ -161,7 +169,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # machina
@@ -183,9 +191,12 @@ CACHES = {
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     },
 }
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -199,8 +210,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'own_email@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -210,8 +221,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # FOR CRISPY_FORMS
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-GCS_PROJECT = os.environ.get("manifest-craft-314609")
-GCS_BUCKET = os.environ.get("gcloud-msbud")
+GCS_PROJECT = os.environ.get("GCS_PROJECT")
+GCS_BUCKET = os.environ.get("GCS_BUCKET")
 GCS_CREDENTIALS_FILE_PATH = os.path.join(BASE_DIR, "my-key.json")
 
 GCS_USE_UNSIGNED_URLS = True
@@ -222,3 +233,13 @@ POSTMAN_AUTO_MODERATE_AS = True
 POSTMAN_DISALLOW_ANONYMOUS = True
 
 MACHINA_FORUM_NAME = "MSBUD Forum"
+
+
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
