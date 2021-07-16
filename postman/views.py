@@ -488,3 +488,5 @@ class MarkUnreadView(UpdateRecipientMixin, View):
     """Revert messages/conversations from marked as read."""
     field_bit = 'read_at'
     success_msg = gettext_lazy("Messages or conversations successfully marked as unread.")
+
+
