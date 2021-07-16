@@ -23,12 +23,17 @@
       type="text/css"
       href="https://www.dropbox.com/s/sycq6iwdit4pynw/temp.css?dl=0"
     />
+    <style type="text/css">
+      nav a {
+        text-decoration: none;
+      }
+    </style>
     {% block cssfiles %}{% endblock cssfiles %}
     <title>My Study Buddy</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand ml-4 mr-4" href="#"><b>My Study Buddy</b></a>
+    <nav class="nav nav-fill navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand mx-5" href="#"><b>My Study Buddy</b></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -40,14 +45,16 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-        <div class="navbar-nav justify-content-between">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
           <a class="nav-item nav-link mx-4" href="{% url 'home' %}">Home</a>
           <a class="nav-item nav-link mx-4" href="{% url 'forum:index' %}">Forum</a>
           <a class="nav-item nav-link mx-4" href="{% url 'users_list' %}"
             >Find New Buddies</a
           >
-          <a class="nav-item nav-link mx-4" href="{% url 'resources' %}">Resources</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
+            >Create Post</a
+          >
           {% block searchform %}
           <form
             class="form-inline my-2 my-lg-0 ml-5"
@@ -55,15 +62,12 @@
             method="get"
           >
             <input name="q" type="text" placeholder="Search users.." />
-            <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">Search
+            <button class="btn btn-success btn-sm my-2 my-sm-0 ml-4" type="submit">Search
             </button>
           </form>
           {% endblock searchform %}&emsp;&emsp;&emsp;
-          <a class="nav-item nav-link mx-4" href="{% url 'my_profile' %}">Profile</a>
-          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
-            >Create Post</a
-          >
-          <li class="nav-item dropdown mx-4">
+          <a class="nav-item nav-link mx-5" href="{% url 'my_profile' %}">Profile</a>
+          <li class="nav-item dropdown mx-5">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Messaging</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -74,10 +78,10 @@
                 <a class="dropdown-item" href="{% url 'postman:trash' %}">Trash</a>
               </div>
             </li>
-          <a class="nav-item nav-link mx-4" href="{% url 'friend_list' %}"
+          <a class="nav-item nav-link mx-5" href="{% url 'friend_list' %}"
             >My Buddies</a>
           <a
-            class="nav-item nav-link btn btn-danger text-light mx-5"
+            class="nav-item nav-link btn btn-danger btn-sm text-light mx-5"
             href="{% url 'logout' %}"
             >Logout</a>
         </div>
