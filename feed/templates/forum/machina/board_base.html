@@ -3,8 +3,13 @@
 {% load i18n %}
 {% load forum_permission_tags %}
 
-{% block title %}{{ MACHINA_FORUM_NAME|default:"Forum" }} &mdash; {% block sub_title %}{% endblock sub_title %}{% endblock title %}
 
+{% block title %}{{ MACHINA_FORUM_NAME|default:"Forum" }} &mdash; {% block sub_title %}{% endblock sub_title %}{% endblock title %}
+<style type="text/css">
+nav a {
+  text-decoration: none;
+}
+</style>
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
@@ -14,8 +19,8 @@
 
 {% block body %}
 {% block header %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand ml-4 mr-4" href="#"><b>My Study Buddy</b></a>
+<nav class="nav nav-fill navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand mx-5" href="#"><b>My Study Buddy</b></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,26 +40,25 @@
           <a class="nav-item nav-link mx-4" href="{% url 'users_list' %}"
             >Find New Buddies</a
           >
-          <a class="nav-item nav-link mx-4" href="{% url 'resources' %}">Resources</a>
+          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
+            >Create Post</a
+          >
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% block header_collapse %}
-            <form class="form-inline mx-4" role="search" action="{% url 'forum_search:search' %}">
+            <form class="form-inline form-sm mx-4" role="search" action="{% url 'forum_search:search' %}">
               <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" name="q">
-              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+              <button class="btn btn-outline-light btn-sm my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
             </form>
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
             </div>
             {% endblock header_collapse %}
           &emsp;&emsp;
-          <a class="nav-item nav-link mx-4" href="{% url 'my_profile' %}">Profile</a>
-          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
-            >Create Post</a
-          >
-          <li class="nav-item dropdown mx-4">
+          <a class="nav-item nav-link mx-5" href="{% url 'my_profile' %}">Profile</a>
+          <li class="nav-item dropdown mx-5">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Messaging</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -65,22 +69,22 @@
                 <a class="dropdown-item" href="{% url 'postman:trash' %}">Trash</a>
               </div>
             </li>
-          <a class="nav-item nav-link mx-4" href="{% url 'friend_list' %}"
+          <a class="nav-item nav-link mx-5" href="{% url 'friend_list' %}"
             >My Buddies</a
           >
           <a
-            class="nav-item nav-link btn btn-danger text-light mx-4"
+            class="nav-item nav-link btn btn-danger btn-sm text-light mx-5"
             href="{% url 'logout' %}"
             >Logout</a
           >
           {% else %}
           <a
-            class="nav-item nav-link btn btn-success ml-4 text-light"
+            class="nav-item nav-link btn btn-success btn-sm ml-4 text-light"
             href="{% url 'login' %}"
             >Login</a
           >
           <a
-            class="nav-item nav-link btn btn-info ml-3 text-light"
+            class="nav-item nav-link btn btn-info btn-sm ml-3 text-light"
             href="{% url 'register' %} "
             >Register</a
           >
