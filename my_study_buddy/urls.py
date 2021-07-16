@@ -19,6 +19,8 @@ from django.urls import path, include
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static, serve
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.conf import settings
 
 urlpatterns = [
@@ -42,6 +44,7 @@ urlpatterns = [
     path('password-reset/done/', auth_views.PasswordResetView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name='password_reset_complete'),
+    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),),
     
 ]
 

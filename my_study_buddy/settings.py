@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
         'localhost',
-        'https://msbud.herokuapp.com/',
+        'http://msbud.herokuapp.com/',
         ]
 
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # forum
     'mptt',
+    'whoosh',
     'haystack',
     'widget_tweaks',
     'machina',
