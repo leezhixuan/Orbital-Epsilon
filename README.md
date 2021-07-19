@@ -9,7 +9,6 @@ We and the people around us have found it hard to make friends as classes contin
 1. Look for study buddies from similar course backgrounds
 2. Pool in resources to aid learning/navigate through University
 3. Look for suitable project mates to tackle projects in certain modules
-4. Have real time information about the crowd level of study places in NUS
 
 
 # Aim:
