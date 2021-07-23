@@ -1,5 +1,5 @@
 # Orbital-Epsilon
-Team Epsilon's Orbital Project: My Study Buddy 
+Team Epsilon's Orbital 2021 Project: My Study Buddy 
 
 Deployment Link: http://msbud.herokuapp.com/
 
@@ -15,4 +15,4 @@ We and the people around us have found it hard to make friends as classes contin
 We hope to create a platform that would allow NUS students to come together and create a more conducive environment and engaging experience for the student population in NUS.
 
 # View Full Documentation: 
-https://docs.google.com/document/d/19EJ7qzoDQBzEJRiDnY2ZSlvM7q4jUVpmTcfrR_8RYgA/edit?usp=sharing
+https://docs.google.com/document/d/18XVDcJ_F3YPC7Ei-xzXsymCBMmGEp69cvrBPFN2l838/edit?usp=sharing
