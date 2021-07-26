@@ -1,10 +1,22 @@
-{% extends "feed/layout.html" %} {% load static %}{% block searchform %}
+{% extends "feed/layout.html" %} {% load static %}
+<style>
+.form-inline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-inline #search{
+  width: 50%;
+}
+</style>
+{% block searchform %}
 <form
   class="form-inline my-2 my-lg-0 ml-5"
   action="{% url 'search_users' %}"
   method="get"
 >
-  <input name="q" type="text" placeholder="Search users.." />
+  <input name="q" type="text" placeholder="Search Users.." />
   <button class="btn btn-success btn-sm my-2 my-sm-0 ml-4" type="submit">
     Search
   </button>
