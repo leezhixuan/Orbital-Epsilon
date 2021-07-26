@@ -1,0 +1,4 @@
+django_env/
+__pychache__/
+*.sqlite3
+.DS_Store
