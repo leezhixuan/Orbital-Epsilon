@@ -5,132 +5,130 @@
 
 
 {% block title %}{{ MACHINA_FORUM_NAME|default:"Forum" }} &mdash; {% block sub_title %}{% endblock sub_title %}{% endblock title %}
-<style type="text/css">
-nav a {
-  text-decoration: none;
-}
-</style>
+
 {% block css %}
 {{ block.super }}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"/>
-<link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/sycq6iwdit4pynw/temp.css?dl=0"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<style type="text/css">
+.first {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.searchbar {
+  padding
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+
+.second {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+</style>
 {% endblock css %}
 
 {% block body %}
 {% block header %}
-<nav class="nav nav-fill navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand mx-5" href="#"><b>My Study Buddy</b></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+<nav class="nav d-flex flex-row justify-content-between nav-fill navbar-expand-lg navbar-dark bg-dark sticky-top container-fluid" style="">
+  <div class="first">
+    <a class="navbar-brand mr-4 ml-4" href="#"><b>My Study Buddy</b></a>
+    <a class="nav-item nav-link text-light" href="{% url 'home' %}">Home</a>
+    <a class="nav-item nav-link text-light" href="{% url 'forum:index' %}">Forum</a>
+    {% if user.is_authenticated %}
+    <a class="nav-item nav-link text-light" href="{% url 'users_list' %}"
+    >Find New Buddies</a>
+  </div>
+  <div class="searchbar">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% block header_collapse %}
+      <form class="form-inline form-sm" role="search" action="{% url 'forum_search:search' %}">
+        <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-outline-light btn-sm" type="submit">{% trans "Search" %}</button>
+      </form>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
+      </div>
+      {% endblock header_collapse %}
+    </div>
+  </div>
+    <div class="second">
+      <a class="nav-item nav-link text-light" href="{% url 'post-create' %}">Create Post</a>
+      <a class="nav-item nav-link text-light" href="{% url 'my_profile' %}">Profile</a>
+        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Messaging</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'postman:inbox' %}">Inbox{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a>
+          <a class="dropdown-item" href="{% url 'postman:write' %}">Write</a>
+          <a class="dropdown-item" href="{% url 'postman:sent' %}">Sent</a>
+          <a class="dropdown-item" href="{% url 'postman:archives' %}">Archives</a>
+          <a class="dropdown-item" href="{% url 'postman:trash' %}">Trash</a>
+        </div>
+      <a class="nav-item nav-link text-light" href="{% url 'friend_list' %}"
+      >My Buddies</a
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link mx-4" href="{% url 'home' %}">Home</a>
-          <a class="nav-item nav-link mx-4" href="{% url 'forum:index' %}">Forum</a>
-          {% if user.is_authenticated %}
-          <a class="nav-item nav-link mx-4" href="{% url 'users_list' %}"
-            >Find New Buddies</a
-          >
-          <a class="nav-item nav-link mx-4" href="{% url 'post-create' %}"
-            >Create Post</a
-          >
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {% block header_collapse %}
-            <form class="form-inline form-sm mx-4" role="search" action="{% url 'forum_search:search' %}">
-              <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" name="q">
-              <button class="btn btn-outline-light btn-sm my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
-            </form>
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
-            </div>
-            {% endblock header_collapse %}
-          &emsp;&emsp;
-          <a class="nav-item nav-link mx-5" href="{% url 'my_profile' %}">Profile</a>
-          <li class="nav-item dropdown mx-5">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Messaging</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="{% url 'postman:inbox' %}">Inbox{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a>
-                <a class="dropdown-item" href="{% url 'postman:write' %}">Write</a>
-                <a class="dropdown-item" href="{% url 'postman:sent' %}">Sent</a>
-                <a class="dropdown-item" href="{% url 'postman:archives' %}">Archives</a>
-                <a class="dropdown-item" href="{% url 'postman:trash' %}">Trash</a>
-              </div>
-            </li>
-          <a class="nav-item nav-link mx-5" href="{% url 'friend_list' %}"
-            >My Buddies</a
-          >
-          <a
-            class="nav-item nav-link btn btn-danger btn-sm text-light mx-5"
-            href="{% url 'logout' %}"
-            >Logout</a
-          >
-          {% else %}
-          <a
-            class="nav-item nav-link btn btn-success btn-sm ml-4 text-light"
-            href="{% url 'login' %}"
-            >Login</a
-          >
-          <a
-            class="nav-item nav-link btn btn-info btn-sm ml-3 text-light"
-            href="{% url 'register' %} "
-            >Register</a
-          >
+      <a
+      class="nav-item nav-link btn btn-danger btn-sm text-light"
+      href="{% url 'logout' %}"
+      >Logout</a
+      >
+      {% else %}
+      <a
+      class="nav-item nav-link btn btn-success btn-sm text-light"
+      href="{% url 'login' %}"
+      >Login</a
+      >
+      &emsp;
+      <a
+      class="nav-item nav-link btn btn-info btn-sm text-light"
+      href="{% url 'register' %} "
+      >Register</a
+      >
+      {% endif %}
+    </div>
+  </nav>
+
+  {% endblock header %}
+  <div class="my-5 container" id="main_container">
+    <div class="row">
+      <div class="col-12">
+        {% block breadcrumb %}{% include "partials/breadcrumb.html" %}{% endblock breadcrumb %}
+        <div class="float-right controls-link-wrapper">
+          {% spaceless %}
+          {% if not request.user.is_anonymous %}
+          <a href="{% url 'forum_member:user_subscriptions' %}" class="d-inline-block ml-3"><i class="fas fa-bookmark">&nbsp;</i>{% trans "Subscriptions" %}</a>
+          <a href="{% url 'forum_member:user_posts' request.user.id %}" class="d-inline-block ml-3"><i class="fas fa-comments">&nbsp;</i>{% trans "View my posts" %}</a>
           {% endif %}
+          {% get_permission 'can_access_moderation_queue' request.user as can_access_moderation_queue %}
+          {% if can_access_moderation_queue %}
+          <a href="{% url 'forum_moderation:queue' %}" class="d-inline-block ml-3"><i class="fas fa-gavel">&nbsp;</i>{% trans "Moderation queue" %}</a>
+          {% endif %}
+          {% endspaceless %}
         </div>
       </div>
-    </nav>
-
-{% endblock header %}
-<div class="my-5 container" id="main_container">
-  <div class="row">
-    <div class="col-12">
-      {% block breadcrumb %}{% include "partials/breadcrumb.html" %}{% endblock breadcrumb %}
-      <div class="float-right controls-link-wrapper">
-      {% spaceless %}
-      {% if not request.user.is_anonymous %}
-        <a href="{% url 'forum_member:user_subscriptions' %}" class="d-inline-block ml-3"><i class="fas fa-bookmark">&nbsp;</i>{% trans "Subscriptions" %}</a>
-        <a href="{% url 'forum_member:user_posts' request.user.id %}" class="d-inline-block ml-3"><i class="fas fa-comments">&nbsp;</i>{% trans "View my posts" %}</a>
-      {% endif %}
-      {% get_permission 'can_access_moderation_queue' request.user as can_access_moderation_queue %}
-      {% if can_access_moderation_queue %}
-        <a href="{% url 'forum_moderation:queue' %}" class="d-inline-block ml-3"><i class="fas fa-gavel">&nbsp;</i>{% trans "Moderation queue" %}</a>
-      {% endif %}
-      {% endspaceless %}
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <br />
+        {% block messages %}{% include "partials/messages.html" %}{% endblock messages %}
       </div>
     </div>
+    {% block content %}
+    {% endblock content %}
   </div>
-  <div class="row">
-    <div class="col-12">
-      <br />
-      {% block messages %}{% include "partials/messages.html" %}{% endblock messages %}
-    </div>
-  </div>
-  {% block content %}
-  {% endblock content %}
-</div>
-{% endblock body %}
+  {% endblock body %}
 
-{% block js %}
-{{ block.super }}
-<script src="{% static 'js/machina.packages.min.js' %}" type="text/javascript" charset="utf-8"></script>
-<script src="{% static 'js/machina.min.js' %}" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-  $(function() {
-    machina.init();
-    {% block onbodyload %}{% endblock onbodyload %}
-  });
-</script>
-{% endblock js %}
+  {% block js %}
+  {{ block.super }}
+  <script src="{% static 'js/machina.packages.min.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script src="{% static 'js/machina.min.js' %}" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      machina.init();
+      {% block onbodyload %}{% endblock onbodyload %}
+    });
+  </script>
+  {% endblock js %}

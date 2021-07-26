@@ -1,11 +1,23 @@
-{% extends "feed/layout.html" %} {% load static %} {% block searchform %}
+{% extends "feed/layout.html" %} {% load static %} 
+<style>
+.form-inline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-inline #search{
+  width: 50%;
+}
+</style>
+{% block searchform %}
 <form
   class="form-inline my-2 my-lg-0 ml-5"
   action="{% url 'search_posts' %}"
   method="get"
 >
-  <input name="p" type="text" placeholder="Search posts.." />
-  <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+  <input name="p" type="text" placeholder="Search Posts (via tags).." />
+  <button class="btn btn-success btn-sm my-2 my-sm-0 ml-4" type="submit">
     Search
   </button>
 </form>
@@ -51,7 +63,7 @@
         </p>
         {% endif %}
         <div class="card-footer">
-          <button class="btn btn-white mr-3 like" id="{{ post.id }}">
+          <button class="btn btn-outline-success mr-3 like" id="{{ post.id }}">
             {% if post in liked_post %}
             <a
               href="{% url 'post-like' %}"
