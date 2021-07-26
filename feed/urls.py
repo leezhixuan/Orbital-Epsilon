@@ -14,7 +14,6 @@ urlpatterns=[
 	path('post/<int:pk>/delete/', views.post_delete, name='post-delete'),
 	path('search_posts/', views.search_posts, name='search_posts'),
 	path('user_posts/<str:username>', UserPostListView.as_view(), name='user-posts'),
-    # path('forum/', views.forum_view, name='forum'),
     path('forum/', include(machina_urls)),
     path('messages/', include('postman.urls', namespace='postman')),
     path('resources/', views.resources, name='resources'),
