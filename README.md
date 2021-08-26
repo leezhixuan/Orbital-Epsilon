@@ -3,6 +3,8 @@ Team Epsilon's Orbital 2021 Project: My Study Buddy
 
 Deployment Link: http://msbud.herokuapp.com/
 
+Note that Forum Search is no longer working since we have unsubscribed from the paid service on heroku.
+
 # Motivation:
 With remote learning becoming the new normal, we and the people around us have found it hard to make friends. Even during the rare instances where we are able to go to campus for face to face lessons, the mandatory mask-on policy makes it almost impossible to communicate freely or even smile at others. As a result of reduced social interactions, our university experience has been underwhelming thus far. That is why we hope to create a platform for students in NUS to come together to:
 
